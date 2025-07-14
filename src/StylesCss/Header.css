@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
+  
     
 }
 .header-right{
@@ -47,7 +47,13 @@
     background-color: #097FD9;
     border: none;
 }
+.register-btn:hover{
+     transform: scale(1.05);
+}
 .login-btn{
     background-color: #090707;
      border: 1px solid #FFFFFF;
+}
+.login-btn:hover{
+     transform: scale(1.05);
 }

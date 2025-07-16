@@ -1,7 +1,8 @@
 
 .section-program{
     height: 544px;
-    
+      padding-top: 70px; /* чтобы содержимое не перекрывалось фиксированным хедером */
+    box-sizing: border-box; /* чтобы padding учитывался внутри height */
 }
 
 .section-program-header{

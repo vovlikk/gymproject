@@ -10,7 +10,7 @@
 .Home{
     display: flex;
     gap: 170px;
-    height: 76vh;
+    height: calc(100vh - 70px); 
     width: 1490px;
     margin: 5% auto;
         

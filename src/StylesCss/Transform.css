@@ -10,19 +10,21 @@
 /* Main wrapper for the Transform section, taking full viewport height */
 .Transoform-Main {
   height: 100vh;
+  
 }
 
-/* Section containing the image and the info block */
 .Transform-Sections {
-      
-  width: 1490px;                /* Fixed width */
-  margin: 0 auto;               /* Center horizontally */
-  display: flex;                /* Use flexbox layout */
-  gap: 70px;                    /* Space between child elements */
-  align-items: center;          /* Vertically center contents */
+  max-width: 1490px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 70px;
+  align-items: center;
   padding-top: 150px;
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
 }
-
 /* Image container inside the transform section */
 .Transoform-Img img {
   width: 800px;  
@@ -105,4 +107,10 @@
 /* Hover effect for "Contact Us" button */
 .Contact-Us:hover {
   transform: scale(1.05);           /* Slightly enlarge on hover */
+}
+
+
+.Transform-Sections {
+  will-change: transform;
+  /* transform: translateZ(0); -- можно добавить, если нужно */
 }

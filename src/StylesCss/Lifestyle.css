@@ -7,15 +7,17 @@
 }
 
 .LifeStyle-Section {
-    width: 1400px;
+    max-width: 1400px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0e0e0e; /* как на изображении */
+    background-color: #0e0e0e;
     padding: 40px 60px;
     gap: 150px;
-    border-radius: 16px;
+    border-radius: 20px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* ТЕКСТ НЕ МЕНЯЛ */

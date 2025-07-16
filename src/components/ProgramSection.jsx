@@ -1,10 +1,12 @@
 import '../StylesCss/ProgramSection.css';
+import { Element } from 'react-scroll';
 import Cardio from '../Img/Program/cardio.png'
 import Fat from  '../Img/Program/fat.png'
 import Food from '../Img/Program/food.png'
 import Muscle from  '../Img/Program/muscle.png'
 function ProgramSection(){
     return(
+        <Element name="program"> 
         <div className='section-program'>
             <div className='section-program-header'>
 
@@ -42,6 +44,7 @@ function ProgramSection(){
             </div>
 
         </div>
+        </Element>
     )
 }
 

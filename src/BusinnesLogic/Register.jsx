@@ -5,6 +5,12 @@ function Register(){
     const[regpassword, setPassword] = useState('');  
     const[loading,setloading] = useState(false);
     const[error,setError] = useState(null);
+    const[hide,sethide] = useState(true);
+
+    function Hide(){
+        sethide(false);
+
+    }
 
     async function HandleSubmit(e) {
         e.preventDefault();
@@ -38,6 +44,7 @@ function Register(){
         <div className="Register-Form">
             {error && <div style={{ color: 'red', fontWeight: 'bold', fontSize: '14px' }}>{error}</div>}
             <div className="Register-Input">
+                <button onClick={Hide}>Close</button>
                 <input onChange={e => setUserName(e.target.value)} value={reguserName} type="text" placeholder="Please Enter Name"></input>
                  <input onChange={e => setPassword(e.target.value)} value={regpassword} type="password" placeholder="Please Enter Password"></input>
             </div>

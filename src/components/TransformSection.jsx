@@ -1,10 +1,13 @@
 import '../StylesCss/Transform.css';
 import Icon from '../Img/Transform/icon.png'
 import MainImg from '../Img/Transform/main-photo.png'
+import Register from '../BusinnesLogic/Authentication/RegisterUser';
+import '../BusinnesLogic/BusinnesCss/Register.css';
+import { useState } from 'react';
 
 function Transform(){
+      const [showRegister, setShowRegister] = useState(false);
     return(
-
     <div className='Transoform-Main'>
         <div className='Transform-Sections'>
         <div className='Transoform-Img'>
@@ -35,8 +38,11 @@ function Transform(){
         </div>
 
         <div className='transform-Info-buttons'> 
-        <button className='Join-now-button'>Join now</button>
+        <button onClick={() => setShowRegister(true)} className='Join-now-button'>Join now</button>
         <button className='Contact-Us'>Contact us</button>
+         {showRegister && (
+          <Register onClose={() => setShowRegister(false)} />
+          )}
         </div>
         </div>
         </div>

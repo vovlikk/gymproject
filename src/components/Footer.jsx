@@ -34,11 +34,7 @@ function Footer(){
             <h2>FAQ</h2>
             <h2>Support</h2>
             </div>
-            
-            <div className='card-footer'>
-            <h1>Social Media</h1>
-            </div>
-
+          
             </div>
             </div>
             

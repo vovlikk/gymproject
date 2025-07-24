@@ -1,9 +1,14 @@
 import { Element } from 'react-scroll';
+import { useState } from 'react';
 import '../StylesCss/Home.css';
 import HomeBigLogo from '../Img/Home/Home-Man-Woman.png';
 import Icons from '../Img/Home/Icons.png';
+import Register from '../BusinnesLogic/Authentication/RegisterUser';
+
 
 function Home() {
+  const [showRegister, setShowRegister] = useState(false);
+
   return (
     <Element name="home"> 
       <div className="Home">
@@ -15,7 +20,12 @@ function Home() {
               and offer modifications and progress tracking.
             </p>
           </div>
-          <button className='Home-button'>Start Training</button>
+          <button onClick={() => setShowRegister(true)} className='Home-button'>Start Training</button>
+
+          {showRegister && (
+          <Register onClose={() => setShowRegister(false)} />
+          )}
+
         </div>
 
         <div className="Home-Right-Side">

@@ -2,15 +2,14 @@ import '../UserPagesCss/UserProfile.css';
 import { useState } from 'react';
 import UserDelete from './UserDelete';
 import UserSettings from './UserSettings';
+import InfoUser from './UserInfo';
+
 
 
 
 function UserProfile({ user, onClose }) {
   const [activeTab, setActiveTab] = useState('profile');
 
-  if (!user) {
-    return <div className="infobom">Загрузка профиля...</div>;
-  }
 
   return (
     <div className='user-profile-overlay' onClick={onClose}>
@@ -24,15 +23,13 @@ function UserProfile({ user, onClose }) {
         <div className="tab-content">
             <div className='tab-user-profile'>
             {activeTab === 'profile' && (
-                <div>
-                    <h3>Name:{user.userName}</h3>
-                    <h3>Email:{user.email}</h3>
-                </div>
+                <InfoUser user={user} />
             )}
             </div>
 
             <div className='tab-user-settings'>
             {activeTab === 'settings' && (
+                
                 <UserSettings />
             )}
             </div>
@@ -43,6 +40,7 @@ function UserProfile({ user, onClose }) {
             )}
             </div>
 
+            
             
         </div>
       </div>

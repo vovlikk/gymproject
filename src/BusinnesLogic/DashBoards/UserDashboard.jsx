@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeaderUser from "../User/UserPages/HeaderUser";
-
-import UserProfile from "../User/UserPages/UserProfile";
+import UserInfo from "../User/UserPages/UserInfo";
 
 function UserDashboard() {
   const [user, setUser] = useState(null);
@@ -16,32 +15,32 @@ function UserDashboard() {
       return;
     }
 
-    fetch("https://414b7a5d1e97.ngrok-free.app/api/values/profile", {
-    method: "GET",
-    headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-    "ngrok-skip-browser-warning": "true"
-    },
-})
-.then(async res => {
-  const text = await res.text();
-  console.log("Ответ от сервера:", text);
+    fetch("https://95a641168fd2.ngrok-free.app/api/values/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        "ngrok-skip-browser-warning": "true",
+      },
+    })
+      .then(async (res) => {
+        const text = await res.text();
+        console.log("Ответ от сервера:", text);
 
-  if (!res.ok) {
-    throw new Error(`Ошибка сервера: ${res.status} ${res.statusText}`);
-  }
+        if (!res.ok) {
+          throw new Error(`Ошибка сервера: ${res.status} ${res.statusText}`);
+        }
 
-  return JSON.parse(text);
-})
-.then(data => {
-  console.log("Профиль:", data);
-  setUser(data);
-})
-.catch(err => {
-  console.error(" Ошибка загрузки:", err);
-  setError(err.message);
-});
+        return JSON.parse(text);
+      })
+      .then((data) => {
+        console.log("Профиль:", data);
+        setUser(data);
+      })
+      .catch((err) => {
+        console.error("Ошибка загрузки:", err);
+        setError(err.message);
+      });
   }, []);
 
   if (error) {
@@ -54,8 +53,8 @@ function UserDashboard() {
 
   return (
     <>
-      <HeaderUser user={user} />
      
+      <HeaderUser user={user} />
     </>
   );
 }

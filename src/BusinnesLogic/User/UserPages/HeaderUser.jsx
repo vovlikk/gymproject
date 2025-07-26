@@ -39,16 +39,7 @@ function HeaderUser({user}) {
           <button onClick={() => setSupportVisible(true)}>Support</button>
           <button onClick={() => setProfileVisible(true)}>Profile</button>
 
-          <div className="profile-dropdown-wrapper" ref={dropdownRef}>
-            <h3 onClick={() => setProfileOpen(prev => !prev)}>Profile ▾</h3>
-            {profileOpen && (
-              <div className="profile-dropdown">
-                <Link to="/user/profile" className="dropdown-item">View Profile</Link>
-                <Link to="/user/settings" className="dropdown-item">Settings</Link>
-                <div className="dropdown-item" onClick={() => alert("Logging out...")}>Logout</div>
-              </div>
-            )}
-          </div>
+          
         </div>
         {profilevisible && (
         <UserProfile user={user} onClick={() => setProfileVisible(false)} />

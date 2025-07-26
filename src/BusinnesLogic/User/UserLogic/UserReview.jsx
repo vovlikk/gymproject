@@ -1,9 +1,9 @@
 import { useState } from "react"
-
+import '../UserLogic.css/UserReview.css'
 
 
 function UserReview(){
-    const[Emailreview,setEmailReview] = useState('');
+    const[userName,setuserName] = useState('');
     const[userReview,setDescripReview] = useState('');
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
@@ -12,7 +12,7 @@ function UserReview(){
         e.preventDefault();
         setloading(true);
         seterror(null);
-        const info = {Email: Emailreview, Review:userReview }
+        const info = {UserName: userName, Review:userReview }
 
         try{
             const token = localStorage.getItem('token');
@@ -43,13 +43,33 @@ function UserReview(){
     }
 
     return(
-        <div>
-            <input type="email" placeholder="Enter you Email" value={Emailreview} onChange={e => setEmailReview(e.target.value)}></input>
-            <input type="text" placeholder="Enter you Review" value={userReview} onChange={e => setDescripReview(e.target.value)} />
-            <button onClick={SendReview}>Send Review</button>
-            {loading && <div>Loading...</div>}
-            {error && <div style={{color:'red'}}>{error}</div>}
-        </div>
+       <div className="review-form-container">
+    <input
+        type="email"
+        className="review-input-user"
+        placeholder="Enter your user"
+        value={userName}
+        onChange={e => setuserName(e.target.value)}
+    />
+
+    <input
+        type="text"
+        className="review-input-text"
+        placeholder="Enter your Review"
+        value={userReview}
+        onChange={e => setDescripReview(e.target.value)}
+    />
+
+    <button
+        className="review-submit-button"
+        onClick={SendReview}
+    >
+        Send Review
+    </button>
+
+    {loading && <div className="review-loading">Loading...</div>}
+    {error && <div className="review-error-message">{error}</div>}
+    </div>
     )
 }
 

@@ -22,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register onClose={() => {}} />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/user" element={<UserDashboard />} />
+       
         
 
       </Routes>

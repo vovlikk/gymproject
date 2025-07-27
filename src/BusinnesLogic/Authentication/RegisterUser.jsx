@@ -25,7 +25,7 @@ function Register({ onClose }) {
 
 
     try {
-      const response = await fetch("https://376f980e42f3.ngrok-free.app/api/values/register", {
+      const response = await fetch("https://c2a891c3c2ea.ngrok-free.app/api/values/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
@@ -34,11 +34,11 @@ function Register({ onClose }) {
 
       if (!response.ok) {
         const responserror = await response.json().catch(() => null);
-        alert(responserror?.status || "Registration error");
+        alert(responserror?.status || "Email or UserName already register");
         return;
       }
 
-      alert('Register Successful');
+      alert('Register Successful'); 
       onClose();
     } catch (err) {
       setError(err.message || "Registration failed");
@@ -51,13 +51,13 @@ function Register({ onClose }) {
    <div className="register-overlay" onClick={onClose}>
   <div className="register-form" onClick={e => e.stopPropagation()}>
 
-    {/* Верхняя часть с заголовком и кнопкой закрытия */}
+    
     <div className="register-header">
       <button className="close-btn" onClick={onClose}>✖</button>
       <h1 className="register-title">Gym Center</h1>
     </div>
 
-    {/* Основная форма с инпутами */}
+   
     <div className="register-body">
 
         <input

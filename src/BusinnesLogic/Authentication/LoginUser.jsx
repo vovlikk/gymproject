@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import '../BusinnesCss/Login.css';
 
 import { useLockBodyScroll } from "../../Hooks/useLockBodyScroll";
 
 function Login({ onClose }) {
-  const [logemail, setLogEmail] = useState('');
   const [logUserName, setLogUserName] = useState('');
   const [logPassword, setLogPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,10 +20,10 @@ function Login({ onClose }) {
     setError(null);
     setLoading(true);
 
-    const userLogin = { Email: logemail, UserName: logUserName, Password: logPassword };
+    const userLogin = { UserName: logUserName, Password: logPassword };
 
     try {
-      const response = await fetch('https://95a641168fd2.ngrok-free.app/api/values/login', {
+      const response = await fetch('https://c2a891c3c2ea.ngrok-free.app/api/values/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },  
         body: JSON.stringify(userLogin),
@@ -31,48 +31,54 @@ function Login({ onClose }) {
 
       if (!response.ok) {
         const resperror = await response.json().catch(() => null);
-        throw new Error(resperror?.message || "Fail Login");
+        throw new Error(resperror?.Message || "Fail Login");
       }
 
       const data = await response.json();
+
       localStorage.setItem('token', data.token);
 
-      alert('Login Successful');
+      const decoded = jwtDecode(data.token);
 
-      navigate('/user');
+      const roles =
+        decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] ||
+        decoded["role"] || [];
+
+      const rolesArray = typeof roles === 'string' ? [roles] : roles;
+
+      if (rolesArray.includes("Admin")) {
+        navigate('/admin');
+      } else {
+        navigate('/user');
+      }
+
+      setLogPassword('');
+      setLogUserName('');
+      alert('Login Successful');
 
     } catch (err) {
       setError(err.message || "Fail Login");
     } finally {
       setLoading(false);
-      setLogPassword('');
-      setLogUserName('');
-      setLogEmail('');
     }
   }
 
   return (
     <div className="login-overlay" onClick={onClose}>
-      <div className="login-form" onClick={e => e.stopPropagation()}>
+      <form className="login-form" onClick={e => e.stopPropagation()} onSubmit={HandlerLogin}>
         <div className="login-header">
-          <button className="close-btn" onClick={onClose}>✖</button>
+          <button type="button" className="close-btn" onClick={onClose}>✖</button>
           <h1 className="login-title">Gym Center</h1>
         </div>
 
         <div className="login-body">
-          <input
-            className="input-email"
-            onChange={e => setLogEmail(e.target.value)}
-            value={logemail}
-            type="email"
-            placeholder="Enter Email"
-          />
           <input
             className="input-username"
             onChange={e => setLogUserName(e.target.value)}
             value={logUserName}
             type="text"
             placeholder="Enter Username"
+            required
           />
           <input
             className="input-password"
@@ -80,6 +86,7 @@ function Login({ onClose }) {
             value={logPassword}
             type="password"
             placeholder="Enter Password"
+            required
           />
         </div>
 
@@ -87,16 +94,14 @@ function Login({ onClose }) {
           <button
             type="submit"
             className="register-button-btn"
-            onClick={HandlerLogin}
             disabled={loading}
           >
-            Login
+            {loading ? 'Loading...' : 'Login'}
           </button>
         </div>
 
         <div className="login-feedback">
           {error && <div className="error-message">{error}</div>}
-          {loading && <div className="loading-message">Loading...</div>}
         </div>
 
         <div className="login-privacy">
@@ -105,7 +110,7 @@ function Login({ onClose }) {
             terms and privacy policy.
           </h2>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

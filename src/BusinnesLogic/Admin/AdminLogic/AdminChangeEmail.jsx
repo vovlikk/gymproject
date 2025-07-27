@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminChangeEmail.css'
 
 function AdminChangeEmail() {
     const [oldEmail, setOldEmail] = useState('');
@@ -46,27 +47,33 @@ function AdminChangeEmail() {
     }
 
     return (
-        <form onSubmit={handlechangeEmailAdmin}>
-            <input
-                type="email"
-                placeholder="Enter current email"
-                value={oldEmail}
-                onChange={e => setOldEmail(e.target.value)}
-                required
-            />
-            <input
-                type="email"
-                placeholder="Enter new email"
-                value={newEmail}
-                onChange={e => setNewEmail(e.target.value)}
-                required
-            />
-            <button type="submit" disabled={loading}>
-                {loading ? 'Changing...' : 'Change Email'}
-            </button>
-
-            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-        </form>
+       <div className="change-email-container">
+        <div className="change-email-title">
+            <h3>Change Email</h3>
+        </div>
+     <form className="change-email-form" onSubmit={handlechangeEmailAdmin}>
+        <input
+        type="email"
+        className="change-email-input"
+        placeholder="Enter current email"
+        value={oldEmail}
+        onChange={e => setOldEmail(e.target.value)}
+        required
+        />
+        <input
+        type="email"
+        className="change-email-input"
+        placeholder="Enter new email"
+        value={newEmail}
+        onChange={e => setNewEmail(e.target.value)}
+        required
+        />
+        <button className="change-email-button" type="submit" disabled={loading}>
+        {loading ? "Changing..." : "Change Email"}
+        </button>
+    </form>
+    {error && <div className="change-email-error">{error}</div>}
+    </div>
     );
 }
 

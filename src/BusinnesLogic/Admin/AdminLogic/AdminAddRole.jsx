@@ -1,7 +1,8 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminAddRole.css'
 
 function AddRole(){
-    const[user,setuser] = useState('');
+    const[user,setUser] = useState('');
     const[loading,setloading] = useState(false);
     const[error, seterror] = useState(null);
 
@@ -41,12 +42,22 @@ function AddRole(){
     }
 
     return(
-        <div>
-            <input value={user} onChange={e => setuser(e.target.value)}></input>
-            <button onClick={Role}>Add Role</button>
-            {loading && <div>Loading....</div>}
-            {error && <div style={{color: "red"}}>{error}</div>}
-        </div>
+         <div className="add-role-container">
+            <h3 className="add-role-title">Add Role</h3>
+        <form className="add-role-form" onSubmit={Role}>
+            <input
+            type="text"
+            className="add-role-input"
+            value={user}
+            placeholder="Enter username"
+            onChange={e => setUser(e.target.value)}
+            />
+            <button type="submit" className="add-role-button" disabled={loading}>
+            {loading ? "Adding..." : "Add Role"}
+            </button>
+        </form>
+      {error && <div className="add-role-error">{error}</div>}
+    </div>
     )
 }
 

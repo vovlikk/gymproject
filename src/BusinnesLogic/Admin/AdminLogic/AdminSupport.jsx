@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminSupport.css'
 
 function AdminSupports(){
     const[adminsupport,setsupport] = useState([]);
@@ -38,15 +39,23 @@ function AdminSupports(){
     }
 
     return(
-        <div>
-            <button onClick={handleGetAllSmsSupport}>Get all Sms</button>
-            {loading && <div>Loading...</div>}
-            {error && <div style={{color:"red"}}>{error}</div>}
+       <div className="get-support-container">
+            <div className="get-support-title">
+                <h3>Support Messages</h3>
+            </div>
+            <button className="get-support-button" onClick={handleGetAllSmsSupport}>
+                Get All Messages
+            </button>
 
-            <ul>
-                {adminsupport.map(s =>{
-                    return <li key={s.Id}>Email:{s.Email} | Descriprion: {s.Description}</li>
-                })}
+            {loading && <div className="get-support-loading">Loading...</div>}
+            {error && <div className="get-support-error">{error}</div>}
+
+            <ul className="get-support-list">
+                {adminsupport.map((s) => (
+                    <li key={s.Id} className="get-support-item">
+                        <strong>Email:</strong> {s.Email} | <strong>Description:</strong> {s.Description}
+                    </li>
+                ))}
             </ul>
         </div>
     )

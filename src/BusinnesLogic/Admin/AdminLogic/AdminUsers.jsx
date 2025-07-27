@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../AdminLogic.css/AdminUsers.css';
 
 
 
@@ -42,14 +42,23 @@ function Users(){
     }
 
     return(
-        <div>
-            <button onClick={handleGetAllUsers}>Get All Users</button>
-            <ul>
-                {loading && <div>Loading...</div>}
-                {error && <div style={{color:'red'}}>{error}</div>}
-                {users.map(u =>{
-                    return <li key={u.Id}>Email: {u.Email} Name: {u.userName}</li>
-                })}
+       <div className="get-users-container">
+            <div className="get-users-title">
+                <h3>All Users</h3>
+            </div>
+            <button className="get-users-button" onClick={handleGetAllUsers}>
+                Get All Users
+            </button>
+
+            {loading && <div className="get-users-loading">Loading...</div>}
+            {error && <div className="get-users-error">{error}</div>}
+
+            <ul className="get-users-list">
+                {users.map(u => (
+                    <li key={u.Id} className="get-users-item">
+                        <strong>Email:</strong> {u.Email} | <strong>Name:</strong> {u.userName}
+                    </li>
+                ))}
             </ul>
         </div>
     )

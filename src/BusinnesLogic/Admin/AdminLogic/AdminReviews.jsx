@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminReviews.css'
 
 function AdminReview(){
     const[adminreviews,setreviews] = useState([]);
@@ -39,16 +40,25 @@ function AdminReview(){
     }
 
     return(
-        <div>
-            <button onClick={handleGetAllReviews}>Get All Reviews</button>
-            {loading && <div>Loading...</div>}
-            {error && <div style={{color: "red"}}>{error}</div>}
-            <ul>
-            {adminreviews.map(r =>{
-                return <li id={r.Id}>Email: {r.Email} | Review: {r.Review}</li>
-            })}
-            </ul>
-        </div>
+        <div className="get-reviews-container">
+  <div className="get-reviews-title">
+    <h3>All Reviews</h3>
+  </div>
+  <button className="get-reviews-button" onClick={handleGetAllReviews}>
+    Get All Reviews
+  </button>
+
+  {loading && <div className="get-reviews-loading">Loading...</div>}
+  {error && <div className="get-reviews-error">{error}</div>}
+
+  <ul className="get-reviews-list">
+    {adminreviews.map((r) => (
+      <li key={r.Id} className="get-reviews-item">
+        <strong>Email:</strong> {r.Email} | <strong>Review:</strong> {r.Review}
+      </li>
+    ))}
+  </ul>
+</div>
     )
 }
 

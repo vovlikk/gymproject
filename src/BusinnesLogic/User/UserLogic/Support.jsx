@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../UserPagesCss/Support.css";
 
 function Support({ onClose }) {
-  const [emailSup, setEmail] = useState("");
+  
   const [description, setDescrip] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
@@ -10,7 +10,7 @@ function Support({ onClose }) {
   async function HandlerMessage() {
     setloading(true);
     seterror(null);
-    const sms = { Email: emailSup, Description: description };
+    const sms = {  Description: description };
 
     try {
       const response = await fetch("", {
@@ -30,7 +30,7 @@ function Support({ onClose }) {
     } finally {
       setloading(false);
       setDescrip("");
-      setEmail("");
+      
     }
   }
 
@@ -42,11 +42,7 @@ function Support({ onClose }) {
         </div>
 
         <div className="support-body">
-          <input
-            placeholder="Enter your Email"
-            value={emailSup}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          
           <input
             className="input-description"
             placeholder="Enter your Description"

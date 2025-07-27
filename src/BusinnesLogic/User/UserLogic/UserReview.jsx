@@ -3,7 +3,7 @@ import '../UserLogic.css/UserReview.css'
 
 
 function UserReview(){
-    const[userName,setuserName] = useState('');
+    
     const[userReview,setDescripReview] = useState('');
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
@@ -12,7 +12,7 @@ function UserReview(){
         e.preventDefault();
         setloading(true);
         seterror(null);
-        const info = {UserName: userName, Review:userReview }
+        const info = {Review:userReview }
 
         try{
             const token = localStorage.getItem('token');
@@ -44,13 +44,7 @@ function UserReview(){
 
     return(
        <div className="review-form-container">
-    <input
-        type="email"
-        className="review-input-user"
-        placeholder="Enter your user"
-        value={userName}
-        onChange={e => setuserName(e.target.value)}
-    />
+   
 
     <input
         type="text"

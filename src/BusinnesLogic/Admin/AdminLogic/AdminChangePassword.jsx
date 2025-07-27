@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminChangePassword.css'
 
 function AdminChangeUserPassword() {
     const [foundEmail, setEmail] = useState('');
@@ -46,26 +47,34 @@ function AdminChangeUserPassword() {
     }
 
     return (
-        <form onSubmit={handleadminChangePassword}>
-            <input
-                type="email"
-                placeholder="Enter user's email"
-                value={foundEmail}
-                onChange={e => setEmail(e.target.value)}
-                required
-            />
-            <input
-                type="password"
-                placeholder="Enter new password"
-                value={newPassword}
-                onChange={e => setPassword(e.target.value)}
-                required
-            />
-            <button type="submit" disabled={loading}>
-                {loading ? 'Changing...' : 'Change Password'}
-            </button>
-            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-        </form>
+        <div className="change-password-container">
+  <div className="change-password-title">
+    <h3>Change Password</h3>
+  </div>
+  <form className="change-password-form" onSubmit={handleadminChangePassword}>
+    <input
+      type="email"
+      className="change-password-input"
+      placeholder="Enter user's email"
+      value={foundEmail}
+      onChange={e => setEmail(e.target.value)}
+      required
+    />
+    <input
+      type="password"
+      className="change-password-input"
+      placeholder="Enter new password"
+      value={newPassword}
+      onChange={e => setPassword(e.target.value)}
+      required
+    />
+    <button className="change-password-button" type="submit" disabled={loading}>
+      {loading ? 'Changing...' : 'Change Password'}
+    </button>
+  </form>
+  {error && <div className="change-password-error">{error}</div>}
+</div>
+
     );
 }
 

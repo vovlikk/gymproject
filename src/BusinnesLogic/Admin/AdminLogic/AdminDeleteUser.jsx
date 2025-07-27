@@ -1,7 +1,8 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminDeleteUser.css'
 
 function AdminDeleteUsers() {
-    const [deleteEmail, setDeleteEmail] = useState('');
+    const [deleteUser, setDeleteEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -9,7 +10,7 @@ function AdminDeleteUsers() {
         setLoading(true);
         setError(null);
 
-        const info = { Email: deleteEmail };
+        const info = { UserName: deleteUser };
 
         try {
             const token = localStorage.getItem('token');
@@ -40,19 +41,25 @@ function AdminDeleteUsers() {
     }
 
     return (
-        <div>
-            <input
-                type="email"
-                placeholder="Enter user email to delete"
-                value={deleteEmail}
-                onChange={e => setDeleteEmail(e.target.value)}
-                required
-            />
-            <button onClick={handleDelete} disabled={loading}>
-                {loading ? 'Deleting...' : 'Delete User'}
-            </button>
-            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-        </div>
+         <div className="delete-user-container">
+      <div className="delete-user-title">
+        <h3>Delete User</h3>
+      </div>
+      <form className="delete-user-form" onSubmit={handleDelete}>
+        <input
+          type="email"
+          className="delete-user-input"
+          placeholder="Enter UserName"
+          value={deleteUser}
+          onChange={e => setDeleteEmail(e.target.value)}
+          required
+        />
+        <button className="delete-user-button" type="submit" disabled={loading}>
+          {loading ? 'Deleting...' : 'Delete User'}
+        </button>
+      </form>
+      {error && <div className="delete-user-error">{error}</div>}
+    </div>
     );
 }
 

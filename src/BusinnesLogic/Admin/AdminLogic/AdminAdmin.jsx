@@ -1,51 +1,66 @@
 import { useState } from "react";
+import '../AdminLogic.css/AdminAdmin.css'
 
-function AddRole(){
-    const[RoleUserName,setRoleUser] = useState('');
-    const[loading,setloading] = useState(false);
-    const[error,seterror] = useState(null);
+function AddRole() {
+  const [roleUserName, setRoleUser] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    async function handleAddRole(params) {
-        setloading(true);
-        seterror(null);
-        const info = {UserName:RoleUserName};
-        try{
-            const token = localStorage.getItem('token');
-            if (!token) {
-                throw new Error("You need authorization!");
-            }
+  async function handleAddRole(e) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    const info = { UserName: roleUserName };
 
-            const response = await fetch('', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify(info)
-            });
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error("You need authorization!");
+      }
 
-            if (!response.ok) {
-                throw new Error("Failed to add role");
-            }
-        }
-        catch(err){
-            seterror(err.message)
-        }
-        finally{
-            setloading(false);
-        }
+      const response = await fetch('', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(info)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add role");
+      }
+
+      alert("Role successfully added!");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    return(
-        <div>
-            <input type="email" 
-            placeholder="Enter  email" 
-            value={RoleUserName} 
-            onChange={e => setRoleUser(e.target.value)} 
-            required
-            />
-            <button onClick={handleAddRole}>Add Role</button>
+  return (
+     <div className="give-role-container">
+        <div className="give-role-title">
+
+      <h3>Give Role</h3>
         </div>
-    )
+      <form className="give-role-form" onSubmit={handleAddRole}>
+        <input
+          type="email"
+          className="give-role-input"
+          placeholder="Enter email"
+          value={roleUserName}
+          onChange={e => setRoleUser(e.target.value)}
+          required
+        />
+        <button className="give-role-button" type="submit" disabled={loading}>
+          {loading ? "Processing..." : "Give Role"}
+        </button>
+      </form>
+      {error && <div className="give-role-error">{error}</div>}
+    </div>
+  );
 }
+
 export default AddRole;

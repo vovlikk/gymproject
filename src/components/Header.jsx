@@ -22,7 +22,7 @@ function Header() {
             <Link to="program" smooth={true} duration={2000}>Program</Link>
             <Link to="price" smooth={true} duration={2000} offset={-100}>Pricing</Link>
             <Link to="community" smooth={true} duration={2000}>Community</Link>
-            <Link to="/user-page">Перейти на User</Link>
+            
           </nav>
 
           <div className="auth-buttons">

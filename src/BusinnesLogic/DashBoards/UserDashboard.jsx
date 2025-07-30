@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import HeaderUser from "../User/UserPages/HeaderUser";
-import UserInfo from "../User/UserPages/UserInfo";
+import HeaderUser from "../../UserLogic/User/UserPages/HeaderUser";
+import UserInfo from "../../UserLogic/User/UserPages/UserInfo"
 
 function UserDashboard() {
   const [user, setUser] = useState(null);
@@ -15,7 +15,7 @@ function UserDashboard() {
       return;
     }
 
-    fetch("https://c2a891c3c2ea.ngrok-free.app/api/values/profile", {
+    fetch("https://2ba53a23faec.ngrok-free.app/api/values/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

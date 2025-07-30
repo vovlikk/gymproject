@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AdminHeader from '../Admin/AdminPages/AdminHeader'
+import AdminHeader from '../../AdminLogic/Admin/AdminPages/AdminHeader'
 
 
 function AdminDashboard(){
@@ -12,7 +12,7 @@ function AdminDashboard(){
             throw new Error('You need authorize');
         }
 
-        fetch('',{
+        fetch('https://2ba53a23faec.ngrok-free.app/api/values/profile',{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",

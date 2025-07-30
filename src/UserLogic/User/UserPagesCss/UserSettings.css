@@ -29,6 +29,7 @@
   cursor: pointer;
   font-size: 15px;
   transition: background-color 0.2s ease;
+   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .settings-buttons button:hover {

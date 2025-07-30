@@ -49,6 +49,7 @@
 .register-btn{
     background-color: #097FD9;
     border: none;
+     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 .register-btn:hover{
      transform: scale(1.05);
@@ -56,6 +57,7 @@
 .login-btn{
     background-color: #090707;
      border: 1px solid #FFFFFF;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 .login-btn:hover{
      transform: scale(1.05);

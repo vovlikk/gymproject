@@ -24,7 +24,6 @@ function Price() {
         </div>
 
         <div className="cards-price">
-          
           {/* Basic Package */}
           <div className="cards">
             <h5>Basic Package</h5>

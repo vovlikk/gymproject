@@ -4,11 +4,15 @@ import Support from '../UserLogic/Support';
 import { useState, useRef, useEffect } from 'react';
 import '../UserPagesCss/HeaderUser.css';
 import UserProfile from './UserProfile';
+import UserSubscription from './UserSubscription';
 
-function HeaderUser({user}) {
+
+
+function HeaderUser({user,onClose}) {
   const[profilevisible,setProfileVisible] = useState(false);
   const [supportVisible, setSupportVisible] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const[showsubscription,setShowSubscription] = useState(false);
   const dropdownRef = useRef(null);
 
 
@@ -30,9 +34,9 @@ function HeaderUser({user}) {
         </div>
 
         <div className="header-user-links">
-          <Link to='user/workouts'>Workouts</Link>
+          <Link to='/user/workouts'>Workouts</Link>
           <Link to='user/progress'>Progress</Link>
-          <Link to='user/subscription'>Subscription</Link>
+          <button className='user-subscription-button' onClick={() => setShowSubscription(true)}>Subscription</button>
         </div>
 
         <div className="header-user-profile">
@@ -42,14 +46,20 @@ function HeaderUser({user}) {
           
         </div>
         {profilevisible && (
-        <UserProfile user={user} onClick={() => setProfileVisible(false)} />
+        <UserProfile user={user} onClose={() => setProfileVisible(false)} />
       )}
 
+      
+      {showsubscription && (
+        <UserSubscription onClose={() => setShowSubscription(false)} />
+      )}
         {supportVisible && (
           <Support onClose={() => setSupportVisible(false)} />
         )}
       </div>
+      
     </header>
+    
   );
 }
 

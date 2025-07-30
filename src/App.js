@@ -6,9 +6,13 @@ import Register from './BusinnesLogic/Authentication/RegisterUser';
 import AdminDashboard from './BusinnesLogic/DashBoards/AdminDashboard';
 import UserDashboard from './BusinnesLogic/DashBoards/UserDashboard';
 
+import WorkoutHomePage from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutsHomePage';
+
+
 import './App.css'
 import './StylesCss/fonts.css';
 import {  Routes, Route } from 'react-router-dom';
+import WorkoutPlanLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutPlanLanding';
 
 
 
@@ -22,8 +26,8 @@ function App() {
         <Route path="/register" element={<Register onClose={() => {}} />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/user" element={<UserDashboard />} />
-       
-        
+        <Route path='/user/workouts' element={<WorkoutHomePage />} />
+        <Route path='/user/workoutplan' element={<WorkoutPlanLanding />} />
 
       </Routes>
     

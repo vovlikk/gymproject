@@ -8,7 +8,7 @@ import Price from '../components/PricesSection';
 import AboutUs from '../components/AboutUsSection'
 import Subscribe from '../components/Subscribe';
 import Footer from '../components/Footer';
-import Company from '../components/CompanySection';
+
 import AdminDashboard from '../BusinnesLogic/DashBoards/AdminDashboard';
 import UserDashboard from '../BusinnesLogic/DashBoards/UserDashboard';
 
@@ -24,7 +24,7 @@ function LandingPage(){
             <AboutUs />
             <Subscribe />
             <Footer />
-            <Company />
+          
         </div>
     )
 }

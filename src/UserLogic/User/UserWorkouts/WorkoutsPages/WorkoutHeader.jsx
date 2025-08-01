@@ -19,9 +19,9 @@ function WorkoutHeader(){
 
                 <div className="workout-header-links">
                     <Link to="/user/workoutplan">WORKOUT PLAN </Link>
-                    <Link>SETS</Link>
-                    <Link>BUILD A V-TAPER</Link>
-                    <Link>DANCERS</Link>
+                    <Link to="/user/workoutsets">SETS</Link>
+                    <Link to="/user/workoutvform">BUILD A V-TAPER</Link>
+                    <Link to="/user/workoutdance">DANCERS</Link>
                 </div>
 
                 <div className="workout-header-button">

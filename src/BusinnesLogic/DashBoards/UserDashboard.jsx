@@ -15,7 +15,7 @@ function UserDashboard() {
       return;
     }
 
-    fetch("https://2ba53a23faec.ngrok-free.app/api/values/profile", {
+    fetch("https://7a3ecbda7b6c.ngrok-free.app/api/values/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

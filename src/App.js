@@ -11,8 +11,13 @@ import WorkoutHomePage from './UserLogic/User/UserWorkouts/WorkoutsPages/Workout
 
 import './App.css'
 import './StylesCss/fonts.css';
-import {  Routes, Route } from 'react-router-dom';
+import {  Routes, Route, Router } from 'react-router-dom';
 import WorkoutPlanLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutPlanLanding';
+import WorkoutSets from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutsSets';
+
+import WorkoutVtaperLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutV-TAPER-Landing';
+
+import WorkoutDanceLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutDanceLanding';
 
 
 
@@ -28,7 +33,9 @@ function App() {
         <Route path="/user" element={<UserDashboard />} />
         <Route path='/user/workouts' element={<WorkoutHomePage />} />
         <Route path='/user/workoutplan' element={<WorkoutPlanLanding />} />
-
+        <Route path='/user/workoutsets' element={<WorkoutSets />} />
+        <Route  path='/user/workoutvform' element={<WorkoutVtaperLanding />} />
+        <Route path='/user/workoutdance' element={<WorkoutDanceLanding />} />
       </Routes>
     
   );

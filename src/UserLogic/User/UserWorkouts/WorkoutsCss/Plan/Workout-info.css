@@ -3,12 +3,12 @@
     justify-content: center;
     padding: 40px 20px;
 
-    width: 100%;
+    width: 90%;
 
 }
 
 .workout-info-section {
-    max-width: 100%;
+    max-width: 1470px;
    display: flex;
    flex-direction: column;
 
@@ -25,34 +25,34 @@
 
 .info-block h1 {
     font-size: 28px;
-    color: #000;
+    color: #fff;
     margin-bottom: 16px;  
 }
 
 .info-block h2{
      font-size: 20px;
-    color: #000;
+    color: #fff;
     margin-bottom: 16px; 
 }
 
 .info-block p {
     font-size: 16px;
     
-    color: #000;
+    color: #fff;
     margin-bottom: 16px;
 }
 
 .info-block ul {
     padding-left: 20px;
     margin-bottom: 16px;
-     color: #000;
+    color: #fff;
 }
 
 .info-block ul li {
-    font-size: 16px;
-    line-height: 1.6;
-     color: #000;
-    margin-bottom: 8px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #fff;
+        margin-bottom: 8px;
 }
 
 
@@ -60,10 +60,6 @@
     margin:  0 auto;
 }
 
-
-body{
-    background-color: #fff;
-}
 
 
 

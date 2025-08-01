@@ -1,5 +1,9 @@
 import '../StylesCss/Footer.css';
 import Logopng from '../Img/Logo/Logo.png'
+import instagram from '../Img/Footer/instagram.png'
+import facebook from '../Img/Footer/facebook.png'
+import twitter from '../Img/Footer/twitter.png'
+import Icon from '../Img/Company/icon.png'
 function Footer(){
     return(
         <div className="footer-main">
@@ -34,10 +38,39 @@ function Footer(){
             <h2>FAQ</h2>
             <h2>Support</h2>
             </div>
+
+            <div className='card-footer'>
+            <div className='card-footer-title'>
+             <h1>Social Media</h1>
+            </div>
+            <div className='card-footer-img'>
+            <img src={instagram} alt="" />
+            <img src={twitter}alt="" />
+            <img src={facebook} alt="" />
+            </div>
+            </div>
           
             </div>
             </div>
             
+            </div>
+
+
+            <div className="company-divider" /> 
+            <div className="Company-main">
+                <div className="company-section">
+
+                    <div className="company-left-side">
+                        <img src={Icon} alt="" />
+                        <h2>2025 Fitness Center</h2>
+                    </div>
+
+                    <div className="company-right-side">
+                        <h1>Term of Use</h1>
+                        <h1>Privacy Policy</h1>
+                    </div>
+
+                </div>
             </div>
 
         </div>

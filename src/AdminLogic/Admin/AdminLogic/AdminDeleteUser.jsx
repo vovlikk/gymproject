@@ -18,7 +18,7 @@ function AdminDeleteUsers() {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://your-api.com/admin/delete-user', {
+            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/delete-user', {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

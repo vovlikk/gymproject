@@ -1,6 +1,7 @@
 import WorkoutHeader from "./WorkoutHeader";
 import '../WorkoutsCss/WorkoutHome.css'
 import HomeImg from '../UserWorkoutsImg/homeworkout.png'
+import { Link } from "react-router-dom";
 
 
 function WorkoutHomePage(){
@@ -26,7 +27,9 @@ function WorkoutHomePage(){
                 </div>
 
                 <div className="workout-home-btn-btn">
+                    <Link to="/user/workoutplan">
                     <button>Check Workout Plan</button>
+                    </Link>
                 </div>
                 </div>
 

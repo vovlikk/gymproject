@@ -23,7 +23,7 @@ function AdminChangeEmail() {
                 throw new Error("You need authorization!");
             }
 
-            const response = await fetch('', {
+            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/admin-change-email', {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

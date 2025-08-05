@@ -25,8 +25,9 @@ function WorkoutHeader(){
                 </div>
 
                 <div className="workout-header-button">
-                
-                <button onClick={() => navigate('/user/workoutplan')}>Come Back</button>
+                <Link to="/user/workouts">
+                <button>Come Back</button>
+                </Link>
                 </div>
             </div>
         </header>

@@ -17,7 +17,7 @@ function Users(){
         
         try{
             const token = localStorage.getItem('token')
-            const response = await fetch('' ,{
+            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/get-all-users' ,{
                 headers: {
                     method: 'GET',
                     "Content-Type":"application/json",

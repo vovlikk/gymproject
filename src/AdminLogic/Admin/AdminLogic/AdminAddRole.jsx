@@ -17,7 +17,7 @@ function AddRole(){
             if(!token){
                 throw new Error("You need Authorization!")
             }
-            const response = await fetch('',{
+            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/add-role-admin',{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

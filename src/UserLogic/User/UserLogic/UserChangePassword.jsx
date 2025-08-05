@@ -25,7 +25,7 @@ function UserChangePassword() {
         throw new Error('You need to authorize');
       }
 
-      const response = await fetch('', {
+      const response = await fetch('https://a08592bdc560.ngrok-free.app/api/User/change-number', {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

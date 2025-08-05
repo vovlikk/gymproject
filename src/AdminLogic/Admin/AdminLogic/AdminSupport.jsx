@@ -16,7 +16,7 @@ function AdminSupports(){
             if(!token){
                 throw new Error("You need authorization")
             }
-            const response = await fetch('',{
+            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/support-messages',{
                 method: "GET",
                 headers:{
                     "Content-Type":"application/json",

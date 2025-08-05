@@ -35,7 +35,7 @@ function HeaderUser({user,onClose}) {
 
         <div className="header-user-links">
           <Link to='/user/workouts'>Workouts</Link>
-          <Link to='user/progress'>Progress</Link>
+          <Link to='/user/workoutprogress'>Progress</Link>
           <button className='user-subscription-button' onClick={() => setShowSubscription(true)}>Subscription</button>
         </div>
 

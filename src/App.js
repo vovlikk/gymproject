@@ -19,6 +19,8 @@ import WorkoutVtaperLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/Wo
 
 import WorkoutDanceLanding from './UserLogic/User/UserWorkouts/WorkoutsPages/WorkoutDanceLanding';
 
+import UserProgressPage from './UserLogic/User/UserProgress/UserProgressPage/UserProgressPage';
+
 
 
 
@@ -36,6 +38,8 @@ function App() {
         <Route path='/user/workoutsets' element={<WorkoutSets />} />
         <Route  path='/user/workoutvform' element={<WorkoutVtaperLanding />} />
         <Route path='/user/workoutdance' element={<WorkoutDanceLanding />} />
+
+        <Route path='/user/workoutprogress' element={<UserProgressPage />} />
       </Routes>
     
   );

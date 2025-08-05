@@ -13,7 +13,7 @@ function Support({ onClose }) {
     const sms = {  Description: description };
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("https://a08592bdc560.ngrok-free.app/api/User/submit-message-tosupport", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(sms),

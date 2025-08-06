@@ -9,12 +9,12 @@ import AdminUsers from '../AdminLogic/AdminUsers'
 import AdminReviews from '../AdminLogic/AdminReviews'
 import AdminDeleteUser from '../AdminLogic/AdminDeleteUser'
 
-function AdminSettings() {
+function AdminSettings({onClose}) {
   const [choise, setclick] = useState('admin-add-role');
 
   return (
-    <div className="admin-settings-overlay">
-      <div className="admin-settings-body">
+    <div className="admin-settings-overlay"  onClick={onClose} >
+      <div className="admin-settings-body" onClick={e => e.stopPropagation()}>
         <div className="admin-settings-buttons">
           <button onClick={() => setclick('admin-add-role')}>Add Role</button>
           <button onClick={() => setclick('admin-role-admin')}>Give Role Admin</button>
@@ -26,7 +26,7 @@ function AdminSettings() {
           <button onClick={() => setclick('admin-check-allusers')}>Get All Users</button>
         </div>
 
-        <div className="admin-content">
+        <div className="admin-content" >
           {choise === 'admin-add-role' && (
             <div className="admin-add-role">
               <AdminAddRole />

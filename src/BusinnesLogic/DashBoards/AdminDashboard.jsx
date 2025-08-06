@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminHeader from '../../AdminLogic/Admin/AdminPages/AdminHeader'
+import AdminHomePage from "../../AdminLogic/Admin/AdminPages/AdminHomePage";
+
 
 
 function AdminDashboard(){
@@ -12,11 +14,12 @@ function AdminDashboard(){
             throw new Error('You need authorize');
         }
 
-        fetch('https://2ba53a23faec.ngrok-free.app/api/values/profile',{
+        fetch('https://06a31ca0ee9b.ngrok-free.app/api/values/profile',{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
-                Authorization:`Bearer ${token}`
+                Authorization:`Bearer ${token}`,
+                "ngrok-skip-browser-warning": "true"
             },
         })
         .then(async (res) =>{
@@ -39,8 +42,17 @@ function AdminDashboard(){
 
     return(
         <div>
+        {admin ? (
+        <>
             <AdminHeader admin={admin} />
-        </div>
+           
+        </>
+        ) : error ? (
+        <p>Ошибка: {error.message}</p>
+        ) : (
+        <p>Загрузка данных администратора...</p>
+        )}
+  </div>
     )
 }
 

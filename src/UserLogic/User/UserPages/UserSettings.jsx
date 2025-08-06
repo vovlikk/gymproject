@@ -5,6 +5,8 @@ import AddNumberUser from "../UserLogic/AddNumberPhone";
 import '../UserPagesCss/UserSettings.css';
 import UserReview from '../UserLogic/UserReview'
 import ChangeUserNumber from '../UserLogic/UserChangeNumber'
+import DeleteMySubscription from '../UserLogic/DeleteMySubscription'
+import MySubscriptions from "../UserLogic/UserMySubscription";
 
 
 function UserSettings() {
@@ -18,7 +20,8 @@ function UserSettings() {
         <button onClick={() => setchoise('add-number')}>Add Phone Number</button>
         <button onClick={() => setchoise('change-number')}>Change Number</button>
         <button onClick={() => setchoise('send-review')}>Send Review</button>
-
+        <button onClick={() => setchoise('delete-subscription')}>Delete Subscription</button>
+        <button onClick={() =>setchoise('my-sub')}>My Subscription</button>
 
       </div>
 
@@ -50,6 +53,18 @@ function UserSettings() {
             <div className="settings-change-number">
                 <ChangeUserNumber />
             </div>
+        )}
+
+        {choise === 'delete-subscription' &&(
+          <div className="settings-delete-subscription">
+            <DeleteMySubscription />
+          </div>
+        )}
+
+        {choise === 'my-sub' && (
+          <div className="settings-my-sub">
+            <MySubscriptions />
+          </div>
         )}
       </div>
     </div>

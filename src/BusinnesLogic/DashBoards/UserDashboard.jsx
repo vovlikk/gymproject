@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HeaderUser from "../../UserLogic/User/UserPages/HeaderUser";
 import UserInfo from "../../UserLogic/User/UserPages/UserInfo"
+import UserDashboardHome from "./DashBoardsCompontents/UserDashBoardHome";
 
 function UserDashboard() {
   const [user, setUser] = useState(null);
@@ -15,7 +16,7 @@ function UserDashboard() {
       return;
     }
 
-    fetch("https://a08592bdc560.ngrok-free.app/api/values/profile", {
+    fetch("https://06a31ca0ee9b.ngrok-free.app/api/values/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -55,6 +56,7 @@ function UserDashboard() {
     <>
      
       <HeaderUser user={user} />
+      <UserDashboardHome user={user} />
     </>
   );
 }

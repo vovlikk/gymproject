@@ -2,20 +2,17 @@ import '../AdminPages.css/AdminHeader.css'
 import logo from '../../../Img/Logo/Logo.png'
 import { useEffect, useState } from 'react';
 import AdminSettings from './AdminSettings';
+import AdminHomePage from './AdminHomePage';
+import { Link } from 'react-router-dom';
 
-function AdminHeader({ admin }) {
-  const [color, setColor] = useState(false);
+
+
+function AdminHeader({ admin ,}) {
+  
   const [showsettings, setsettings] = useState(false);
 
-  useEffect(() => {
-    document.body.style.transition = "color 0.5s ease, background-color 0.5s ease";
-    document.body.style.color = color ? "white" : "black";
-    document.body.style.backgroundColor = color ? "black" : "white";
-  }, [color]);
-
-  function btoggleColorim() {
-    setColor(prev => !prev);
-  }
+  
+  
 
   return (
     <>
@@ -26,14 +23,13 @@ function AdminHeader({ admin }) {
           </div>
 
           <div className='admin-buttons'>
-            <div className='change-teme'>
-              <button onClick={btoggleColorim}>Change Theme</button>
-            </div>
             <div className='admin-btn-settings'>
               <button onClick={() => setsettings(true)}>Open settings</button>
             </div>
             <div className='admin-btn-exit'>
+              <Link to="/">
               <button>Exit</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -43,6 +39,8 @@ function AdminHeader({ admin }) {
       {showsettings && (
         <AdminSettings onClose={() => setsettings(false)} />
       )}
+
+      <AdminHomePage admin={admin} />
     </>
   );
 }

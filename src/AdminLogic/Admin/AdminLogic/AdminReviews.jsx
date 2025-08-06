@@ -20,7 +20,8 @@ function AdminReview(){
             const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/reviews-messages',{
                  method: 'GET',
                 headers: {"Content-Type":"application/json" ,
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
+                "ngrok-skip-browser-warning": "true"
                 },
             })
 

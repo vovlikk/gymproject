@@ -38,7 +38,7 @@ function Support({ onClose }) {
     <div className="support-overlay" onClick={onClose}>
       <div className="support-form" onClick={(e) => e.stopPropagation()}>
         <div className="support-header">
-          <h1>Support Form</h1>
+          
         </div>
 
         <div className="support-body">

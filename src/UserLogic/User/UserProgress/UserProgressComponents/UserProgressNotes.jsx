@@ -17,7 +17,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/UserNote/get-all-notes', {
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/UserNote/get-all-notes', {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://f36914f1a693.ngrok-free.app/api/UserNote/post-new-note', {
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/UserNote/post-new-note', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function UserProgressNotes({ onClose }) {
             const token = localStorage.getItem('token');
             if (!token) throw new Error('You need Authorization');
 
-            const response = await fetch(`https://f36914f1a693.ngrok-free.app/api/UserNote/deleteNote/${deleteid}`, {
+            const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/UserNote/deleteNote/${deleteid}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -107,7 +107,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization")
             }
 
-            const response = await fetch(`https://a08592bdc560.ngrok-free.app/api/UserNote/change-note/${changeid}`,{
+            const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/UserNote/change-note/${changeid}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",
@@ -165,18 +165,18 @@ function UserProgressNotes({ onClose }) {
                     </button>
                 </form>
 
-                <form onSubmit={DeleteNote} className="delete-form">
-                    <input
-                        type="number"
-                        value={deleteid}
-                        onChange={(e) => setiIdDelete(e.target.value)}
-                        placeholder="Enter Note ID to delete"
-                        className="delete-input"
-                    />
-                    <button type="submit" className="delete-button">
-                        Delete Note
-                    </button>
-                </form>
+                <form onSubmit={DeleteNote} className="note-delete-form-ctrl">
+                <input
+                    type="number"
+                    value={deleteid}
+                    onChange={(e) => setiIdDelete(e.target.value)}
+                    placeholder="Enter Note ID to delete"
+                    className="note-delete-input-field"
+                />
+                <button type="submit" className="note-delete-submit-btn">
+                    Delete Note
+                </button>
+            </form>
 
                <form onSubmit={ChangeNotes} className="change-note-form">
                     <input

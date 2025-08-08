@@ -23,7 +23,7 @@ function Login({ onClose }) {
     const userLogin = { UserName: logUserName, Password: logPassword };
 
     try {
-      const response = await fetch('https://06a31ca0ee9b.ngrok-free.app/api/values/login', {
+      const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/values/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },  
         body: JSON.stringify(userLogin),

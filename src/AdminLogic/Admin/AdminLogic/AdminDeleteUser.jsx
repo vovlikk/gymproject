@@ -18,7 +18,7 @@ function AdminDeleteUsers() {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/delete-user', {
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/delete-user', {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function AdminDeleteUsers() {
         <input
           type="email"
           className="delete-user-input"
-          placeholder="Enter UserName"
+          placeholder="Enter Email"
           value={deleteUser}
           onChange={e => setDeleteEmail(e.target.value)}
           required

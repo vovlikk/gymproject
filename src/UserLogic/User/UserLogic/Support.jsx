@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../UserPagesCss/Support.css";
 
 function Support({ onClose }) {
-  
+  const[name,setName] = useState('');
   const [description, setDescrip] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
@@ -10,12 +10,20 @@ function Support({ onClose }) {
   async function HandlerMessage() {
     setloading(true);
     seterror(null);
-    const sms = {  Description: description };
+    const sms = {UserName:name,  Description: description };
 
     try {
-      const response = await fetch("https://a08592bdc560.ngrok-free.app/api/User/submit-message-tosupport", {
+      const token = localStorage.getItem('token');
+      if(!token){
+        throw new Error('you need authorize');
+      }
+      const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/User/submit-message-tosupport", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" ,
+          Authorization:`Bearer ${token}`,  
+
+        },
+        
         body: JSON.stringify(sms),
       });
 
@@ -42,7 +50,11 @@ function Support({ onClose }) {
         </div>
 
         <div className="support-body">
-          
+          <input type="" 
+            value={name}
+            placeholder="enter your UserName"
+            onChange={(e) => setName(e.target.value)}
+          />
           <input
             className="input-description"
             placeholder="Enter your Description"

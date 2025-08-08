@@ -18,11 +18,12 @@ function AddRole() {
         throw new Error("You need authorization!");
       }
 
-      const response = await fetch('', {
+      const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/add-role-admin', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+             "ngrok-skip-browser-warning": "true"
         },
         body: JSON.stringify(info)
       });
@@ -47,9 +48,9 @@ function AddRole() {
         </div>
       <form className="give-role-form" onSubmit={handleAddRole}>
         <input
-          type="email"
+          type="text"
           className="give-role-input"
-          placeholder="Enter email"
+          placeholder="Enter UserName"
           value={roleUserName}
           onChange={e => setRoleUser(e.target.value)}
           required

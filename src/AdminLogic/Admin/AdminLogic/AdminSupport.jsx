@@ -16,7 +16,7 @@ function AdminSupports(){
             if(!token){
                 throw new Error("You need authorization")
             }
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/support-messages',{
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/support-messages',{
                 method: "GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -53,8 +53,10 @@ function AdminSupports(){
 
             <ul className="get-support-list">
                 {adminsupport.map((s) => (
-                    <li key={s.Id} className="get-support-item">
-                        <strong>Email:</strong> {s.Email} | <strong>Description:</strong> {s.Description}
+                   
+                   <li key={s.id} className="get-support-item">
+                    
+                 <strong>Id {s.id}</strong>   <strong>User: {s.userName}</strong>    <strong>Description:</strong> {s.description}
                     </li>
                 ))}
             </ul>

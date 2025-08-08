@@ -25,7 +25,7 @@ function Register({ onClose }) {
 
 
     try {
-      const response = await fetch("https://c2a891c3c2ea.ngrok-free.app/api/values/register", {
+      const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/values/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

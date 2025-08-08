@@ -2,9 +2,10 @@ import { useState } from 'react';
 import Logo from '../../../../Img/Logo/Logo.png';
 import '../UserProgress.css/UserProgressHeader.css'
 import UserProgressCalendar from './UserProgressCalendar';
-import UserProgressGrafic from './UserProgressGrafics';
+import UserProgressGrafics from './UserProgressGrafics';
 import UserProgressNotes from './UserProgressNotes';
 import { Link } from 'react-router-dom';
+
 function UserProgressHeader({onClose}){
 
     const[openpagecalendar,setOpenPageCalendar] = useState(false);
@@ -20,7 +21,7 @@ function UserProgressHeader({onClose}){
             </div>
 
             <div className='user-progress-header-buttons'>
-                <button onClick={() => setOpenPageCalendar(true)}>Calendar</button>
+                
                 <button onClick={() => setOpenPageGrafic(true)} >Grafics</button>
                 <button onClick={() => setOpenPageNotes(true)}>Notes</button>
             </div>
@@ -32,12 +33,9 @@ function UserProgressHeader({onClose}){
             </div>
         </div>
 
-        {openpagecalendar && (
-            <UserProgressCalendar onClose={() => setOpenPageCalendar(false)} />
-        )}
-
+       
         {openpagegrafic &&(
-            <UserProgressGrafic onClose={() => setOpenPageGrafic(false)} />
+            <UserProgressGrafics onClose={() => setOpenPageGrafic(false)} />
         )}
 
         {openpagenotes && (

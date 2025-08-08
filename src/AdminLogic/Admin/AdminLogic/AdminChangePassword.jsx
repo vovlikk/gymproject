@@ -23,7 +23,7 @@ function AdminChangeUserPassword() {
                 throw new Error("You need authorization!");
             }
 
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/user-update-password', {
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/user-update-password', {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

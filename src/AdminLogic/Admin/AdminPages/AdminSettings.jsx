@@ -8,6 +8,8 @@ import AdminSupport from '../AdminLogic/AdminSupport'
 import AdminUsers from '../AdminLogic/AdminUsers'
 import AdminReviews from '../AdminLogic/AdminReviews'
 import AdminDeleteUser from '../AdminLogic/AdminDeleteUser'
+import AdminDeleteSupportSms from "../AdminLogic/AdminDeleteSupportSms";
+
 
 function AdminSettings({onClose}) {
   const [choise, setclick] = useState('admin-add-role');
@@ -23,6 +25,7 @@ function AdminSettings({onClose}) {
           <button onClick={() => setclick('admin-delete-user')}>Delete User</button>
           <button onClick={() => setclick('admin-check-reviews')}>Check Review</button>
           <button onClick={() => setclick('admin-check-support')}>Check Support</button>
+          <button onClick={() => setclick('admin-delete-sup')}>Delete Sms Support</button>
           <button onClick={() => setclick('admin-check-allusers')}>Get All Users</button>
         </div>
 
@@ -66,6 +69,11 @@ function AdminSettings({onClose}) {
           {choise === 'admin-check-support' && (
             <div className="admin-check-support">
               <AdminSupport />
+            </div>
+          )}
+           {choise === 'admin-delete-sup' && (
+            <div className="admin-delete-sup">
+              <AdminDeleteSupportSms />
             </div>
           )}
 

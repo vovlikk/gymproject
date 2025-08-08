@@ -17,6 +17,7 @@
     height: 700px;
     background-color: aliceblue;
     border-radius: 40px;
+    padding: 20px;
 }
 
 .error-message {
@@ -86,31 +87,13 @@
   background-color: #aaa;
   cursor: not-allowed;
 }
-
-delete-form button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background-color: #28a745;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-delete-form button:hover {
-  background-color: #218838;
-}
-
-
-.delete-form {
+.note-delete-form-ctrl {
   display: flex;
   gap: 15px;
   margin-top: 30px;
 }
 
-.delete-input {
+.note-delete-input-field {
   flex: 1;
   padding: 14px 20px;
   border-radius: 12px;
@@ -121,11 +104,11 @@ delete-form button:hover {
   background-color: white;
 }
 
-.delete-input:focus {
+.note-delete-input-field:focus {
   border-color: #c82333;
 }
 
-.delete-button {
+.note-delete-submit-btn {
   background-color: #dc3545;
   color: white;
   padding: 14px 24px;
@@ -136,7 +119,7 @@ delete-form button:hover {
   transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
+.note-delete-submit-btn:hover {
   background-color: #c82333;
 }
 

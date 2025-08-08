@@ -16,9 +16,8 @@ function AdminReview(){
           if(!token) {
                 throw new Error("You are not authorized");
             }
-
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/reviews-messages',{
-                 method: 'GET',
+            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/reviews-messages',{
+              
                 headers: {"Content-Type":"application/json" ,
                 Authorization: `Bearer ${token}`,
                 "ngrok-skip-browser-warning": "true"
@@ -55,7 +54,7 @@ function AdminReview(){
   <ul className="get-reviews-list">
     {adminreviews.map((r) => (
       <li key={r.Id} className="get-reviews-item">
-        <strong>Email:</strong> {r.Email} | <strong>Review:</strong> {r.Review}
+         <strong>Review:</strong> {r.review}
       </li>
     ))}
   </ul>

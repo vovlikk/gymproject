@@ -18,7 +18,7 @@ function RemoveSubscription() {
         throw new Error("You need to be authorized");
       }
 
-      const response = await fetch(`https://6a1321867aff.ngrok-free.app/api/Subscribe/unsubscribe/${choiseid}`, {
+      const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/Subscribe/unsubscribe/${choiseid}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

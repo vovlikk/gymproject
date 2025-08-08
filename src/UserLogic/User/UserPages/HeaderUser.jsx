@@ -42,6 +42,9 @@ function HeaderUser({user,onClose}) {
         <div className="header-user-profile">
           <button onClick={() => setSupportVisible(true)}>Support</button>
           <button onClick={() => setProfileVisible(true)}>Profile</button>
+          <Link to="/">
+            <button>Exit</button>
+          </Link>
 
           
         </div>

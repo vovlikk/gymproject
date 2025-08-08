@@ -16,6 +16,7 @@
 .user-progress-home-img img {
     width: 700px;
     height: 600px;
+    border-radius: 20px;
 }
 
 .user-progress-home-text p{

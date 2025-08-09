@@ -1,11 +1,13 @@
 import { useState } from "react";
 import '../AdminLogic.css/AdminChangeEmail.css'
+import { useApi } from '../../../Connect/ApiContext';
 
 function AdminChangeEmail() {
     const [oldEmail, setOldEmail] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { apiUrl } = useApi();
 
     async function handlechangeEmailAdmin(e) {
         e.preventDefault();
@@ -23,7 +25,7 @@ function AdminChangeEmail() {
                 throw new Error("You need authorization!");
             }
 
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/admin-change-email', {
+            const response = await fetch(`${apiUrl}/api/Admin/admin-change-email`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

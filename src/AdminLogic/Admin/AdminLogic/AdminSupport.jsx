@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../AdminLogic.css/AdminSupport.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function AdminSupports(){
     const[adminsupport,setsupport] = useState([]);
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
+    const{apiUrl} = useApi();
 
-    async function handleGetAllSmsSupport(e){
-        e.preventDefault();
+    async function handleGetAllSmsSupport(){
+     
         setloading(true);
         seterror(null);
         
@@ -16,7 +18,7 @@ function AdminSupports(){
             if(!token){
                 throw new Error("You need authorization")
             }
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/support-messages',{
+            const response = await fetch(`${apiUrl}/api/Admin/support-messages`,{
                 method: "GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -39,14 +41,16 @@ function AdminSupports(){
         }
     }
 
+    useEffect(() => {
+  handleGetAllSmsSupport();
+}, [])
+
     return(
        <div className="get-support-container">
             <div className="get-support-title">
                 <h3>Support Messages</h3>
             </div>
-            <button className="get-support-button" onClick={handleGetAllSmsSupport}>
-                Get All Messages
-            </button>
+           
 
             {loading && <div className="get-support-loading">Loading...</div>}
             {error && <div className="get-support-error">{error}</div>}

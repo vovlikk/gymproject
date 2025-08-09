@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../UserPagesCss/UserDelete.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function UserDelete(){
     const[emaildelete,setemail] = useState('');
@@ -8,6 +9,7 @@ function UserDelete(){
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
     const navigate = useNavigate();
+    const{apiUrl} = useApi();
 
     async function DeleteUser(e) {
         e.preventDefault();
@@ -20,7 +22,7 @@ function UserDelete(){
         };
         try{
             const token = localStorage.getItem('token')
-            const response = await fetch('',{
+            const response = await fetch(`${apiUrl}/api/User/delete-user`,{
                 method:"DELETE",
                 body: JSON.stringify(userdelete),
                 headers:{
@@ -31,7 +33,7 @@ function UserDelete(){
             if(!response?.ok){
                 throw new Error(response.status || "Fail to delete user")
             }
-            navigate('/home')
+            navigate('/')
             alert('Account was deleted')
         }
         catch(err){

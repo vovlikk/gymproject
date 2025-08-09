@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../AdminLogic.css/AdminReviews.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function AdminReview(){
     const[adminreviews,setreviews] = useState([]);
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
+    const {apiUrl} = useApi();
 
-    async function handleGetAllReviews(e) {
-    e.preventDefault(); 
+    async function handleGetAllReviews() {
+   
     setloading(true);
     seterror(null);
 
@@ -16,7 +18,7 @@ function AdminReview(){
           if(!token) {
                 throw new Error("You are not authorized");
             }
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/reviews-messages',{
+            const response = await fetch(`${apiUrl}/api/Admin/reviews-messages`,{
               
                 headers: {"Content-Type":"application/json" ,
                 Authorization: `Bearer ${token}`,
@@ -38,15 +40,16 @@ function AdminReview(){
             setloading(false);
         }
     }
+    useEffect(()=>{
+      handleGetAllReviews();
+    },[])
 
     return(
         <div className="get-reviews-container">
   <div className="get-reviews-title">
     <h3>All Reviews</h3>
   </div>
-  <button className="get-reviews-button" onClick={handleGetAllReviews}>
-    Get All Reviews
-  </button>
+  
 
   {loading && <div className="get-reviews-loading">Loading...</div>}
   {error && <div className="get-reviews-error">{error}</div>}

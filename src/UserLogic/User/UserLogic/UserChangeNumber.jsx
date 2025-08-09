@@ -1,8 +1,9 @@
 import { useState } from "react";
 import '../UserLogic.css/UserChangeNumber.css'
-
+import { useApi } from "../../../Connect/ApiContext";
 function ChangeUserNumber() {
   const [newNumber, setNewNumber] = useState('');
+  const{apiUrl} = useApi();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -19,7 +20,7 @@ function ChangeUserNumber() {
         throw new Error('You need authorization');
       }
 
-      const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/User/change-number', {
+      const response = await fetch(`${apiUrl}/api/User/change-number`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

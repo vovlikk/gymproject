@@ -1,16 +1,18 @@
 import { useState } from "react";
 import '../AdminLogic.css/AdminChangePassword.css'
+import { useApi } from '../../../Connect/ApiContext';
 
 function AdminChangeUserPassword() {
     const [foundEmail, setEmail] = useState('');
     const [newPassword, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    const { apiUrl } = useApi();
+    
     async function handleadminChangePassword(e) {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
+      e.preventDefault();
+      setLoading(true);
+      setError(null);
 
         const info = {
             Email: foundEmail,
@@ -23,18 +25,21 @@ function AdminChangeUserPassword() {
                 throw new Error("You need authorization!");
             }
 
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/user-update-password', {
+            const response = await fetch(`${apiUrl}/api/Admin/user-update-password`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    "ngrok-skip-browser-warning": "true"
                 },
                 body: JSON.stringify(info)
             });
 
-            if (!response.ok) {
-                throw new Error("Failed to change password");
-            }
+           if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    console.error("Server error:", errorData);
+    throw new Error(errorData?.message || "Failed to change password");
+}
 
             alert("Password was successfully changed!");
             setEmail('');

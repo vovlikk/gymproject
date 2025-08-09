@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../AdminLogic.css/AdminUsers.css';
-
+import { useApi } from "../../../Connect/ApiContext";
 
 
 
@@ -8,6 +8,7 @@ function Users(){
     const[users,setusers] = useState([]);
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
+    const{apiUrl} = useApi();
 
     
     async function handleGetAllUsers(e) {
@@ -17,7 +18,7 @@ function Users(){
         
         try{
             const token = localStorage.getItem('token')
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/get-all-users' ,{
+            const response = await fetch(`${apiUrl}/api/Admin/get-all-users` ,{
                 headers: {
                     method: 'GET',
                     "Content-Type":"application/json",

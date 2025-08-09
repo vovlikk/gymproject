@@ -1,11 +1,12 @@
 import { useState } from "react";
 import '../UserLogic.css/UserDeleteSubscription.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function RemoveSubscription() {
   const [choiseid, setChouseid] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const{apiUrl} = useApi();
   async function DeleteSub(e) {
     e.preventDefault(); 
 
@@ -18,7 +19,7 @@ function RemoveSubscription() {
         throw new Error("You need to be authorized");
       }
 
-      const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/Subscribe/unsubscribe/${choiseid}`, {
+      const response = await fetch(`${apiUrl}/api/Subscribe/unsubscribe/${choiseid}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

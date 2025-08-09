@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import '../UserPagesCss/UserSubscription.css';
 import icon from '../../../Img/Pricing/icon.png';
+import { useApi } from "../../../Connect/ApiContext";
 
 function UserSubscription({ onClose }) {
   const [message, setmessage] = useState(null);
   const [error, seterror] = useState(null);
   const [loading, setloading] = useState(false);
   const [subscriptions, setsubscriptions] = useState([]); 
+  const{apiUrl} = useApi();
 
   useEffect(() => {
     fetchUserSubscriptions();
@@ -17,7 +19,7 @@ function UserSubscription({ onClose }) {
       const token = localStorage.getItem('token');
       if (!token) throw new Error("Authorization required");
 
-      const res = await fetch('/api/subscribe/my-subscriptions', {
+      const res = await fetch(`${useApi}/api/subscribe/my-subscriptions`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -46,7 +48,7 @@ function UserSubscription({ onClose }) {
         throw new Error("You need Authorization");
       }
 
-      const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/subscribe/subscribe/${id}`, {
+      const response = await fetch(`${apiUrl}/api/subscribe/subscribe/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

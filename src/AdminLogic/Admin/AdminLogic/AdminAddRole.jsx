@@ -1,11 +1,13 @@
 import { useState } from "react";
 import '../AdminLogic.css/AdminAddRole.css'
+import { useApi } from '../../../Connect/ApiContext';
+
 
 function AddRole(){
     const[user,setUser] = useState('');
     const[loading,setloading] = useState(false);
     const[error, seterror] = useState(null);
-
+     const { apiUrl } = useApi();
     async function Role(e) {
         e.preventDefault();
         seterror(null);
@@ -17,7 +19,7 @@ function AddRole(){
             if(!token){
                 throw new Error("You need Authorization!")
             }
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/Admin/add-role-admin',{
+            const response = await fetch(`${apiUrl}/api/Admin/add-role-admin`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

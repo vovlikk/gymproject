@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 import '../UserLogic.css/UseyMySubscription.css'
-
+import { useApi } from "../../../Connect/ApiContext";
 function MySubscriptions() {
   const [subscriptions, setSubscriptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const{apiUrl} = useApi();
 
   useEffect(() => {
     async function fetchSubscriptions() {
@@ -16,7 +17,7 @@ function MySubscriptions() {
         const token = localStorage.getItem("token");
         if (!token) throw new Error("Authorization required");
 
-        const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/Subscribe/my-subscriptions", {
+        const response = await fetch(`${apiUrl}/api/Subscribe/my-subscriptions`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

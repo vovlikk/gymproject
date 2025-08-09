@@ -1,5 +1,6 @@
 import { useState } from "react";
 import '../UserLogic.css/UserChangeEmail.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function UserChangeName(){
     
@@ -7,6 +8,7 @@ function UserChangeName(){
     const[newemail,setNewEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const{apiUrl} = useApi();
 
     async function handlerChangeEmail(e) {
         e.preventDefault();
@@ -27,7 +29,7 @@ function UserChangeName(){
         return;
         }
 
-      const response = await fetch('https://a08592bdc560.ngrok-free.app/api/User/change-email', {
+      const response = await fetch(`${apiUrl}/api/User/change-email`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

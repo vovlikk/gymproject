@@ -3,6 +3,8 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer
 } from "recharts";
 
+import { useApi } from "../../../../Connect/ApiContext";
+
 import '../UserProgress.css/UserProgressGrafics.css'
 
 function WorkoutProgressGrafic({onClose}) {
@@ -11,12 +13,13 @@ function WorkoutProgressGrafic({onClose}) {
   const[workouts,setWorkouts] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const{apiUrl} = useApi();
 
   useEffect(() => {
     const fetchWorkoutData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/UserProgressWorkouts/workouts-everymounth", {
+        const response = await fetch(`${apiUrl}/api/UserProgressWorkouts/workouts-everymounth`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -57,7 +60,7 @@ function WorkoutProgressGrafic({onClose}) {
             throw new Error('You need authorize');
         }
 
-        const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/UserProgressWorkouts/change-workout-info',{
+        const response = await fetch(`${apiUrl}/api/UserProgressWorkouts/change-workout-info`,{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",

@@ -1,27 +1,30 @@
 import { useState } from "react";
 import '../UserLogic.css/AddNumber.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function AddNumberUser(){
     const[newnumber,setnewnumber] = useState('');
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
+    const{apiUrl} = useApi();
 
     async function handleAddNumber(e){
         e.preventDefault(); 
         setloading(true);
         seterror(null);
 
-        const info = {PhoneNumber:newnumber};
+        const info = {TelefoneNumber:newnumber};
         try{
             const token = localStorage.getItem('token');
             if(!token){
                 throw new Error('You need authorize');
             }
-            const response = await fetch('https://a08592bdc560.ngrok-free.app/api/User/add-number',{
+            const response = await fetch(`${apiUrl}/api/User/add-number`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    "ngrok-skip-browser-warning": "true",
                 },
                 body:JSON.stringify(info)
             })

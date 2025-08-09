@@ -2,6 +2,7 @@ import { useState , useEffect} from "react";
 import '../BusinnesCss/Register.css';
 
 import {useLockBodyScroll} from '../../Hooks/useLockBodyScroll'
+import { useApi } from "../../Connect/ApiContext";
 
 
 function Register({ onClose }) {
@@ -11,6 +12,7 @@ function Register({ onClose }) {
   const [password, setPassword] = useState('');
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(null);
+  const{apiUrl} = useApi();
 
   
 
@@ -25,7 +27,7 @@ function Register({ onClose }) {
 
 
     try {
-      const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/values/register", {
+      const response = await fetch(`${apiUrl}/api/values/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

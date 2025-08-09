@@ -1,12 +1,12 @@
 import { useState } from 'react';
-
+import { useApi } from '../../../Connect/ApiContext';
 import '../AdminLogic.css/AdminDeleteSupport.css';
 
 function AdminDeleteSupport(){
     const[id,setId] = useState('');
     const[loading,setLoading] = useState(false);
     const[error,setError] = useState(null);
-
+    const { apiUrl } = useApi();
     async function DeleteId(e) {
         e.preventDefault();
         setLoading(true);
@@ -19,7 +19,7 @@ function AdminDeleteSupport(){
             }
             
 
-            const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/Admin/delete-sms/${id}`,{
+            const response = await fetch(`${apiUrl}/api/Admin/delete-sms/${id}`,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",

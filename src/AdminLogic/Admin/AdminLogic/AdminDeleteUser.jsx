@@ -1,10 +1,12 @@
 import { useState } from "react";
 import '../AdminLogic.css/AdminDeleteUser.css'
+import { useApi } from "../../../Connect/ApiContext";
 
 function AdminDeleteUsers() {
     const [deleteUser, setDeleteEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const{apiUrl} = useApi();
 
     async function handleDelete() {
         setLoading(true);
@@ -18,7 +20,7 @@ function AdminDeleteUsers() {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/Admin/delete-user', {
+            const response = await fetch(`${apiUrl}/api/Admin/delete-user`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,9 +49,9 @@ function AdminDeleteUsers() {
       </div>
       <form className="delete-user-form" onSubmit={handleDelete}>
         <input
-          type="email"
+          type="text"
           className="delete-user-input"
-          placeholder="Enter Email"
+          placeholder="Enter UserName"
           value={deleteUser}
           onChange={e => setDeleteEmail(e.target.value)}
           required

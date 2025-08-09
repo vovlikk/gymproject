@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import '../BusinnesCss/Login.css';
+import { useApi } from "../../Connect/ApiContext";
 
 import { useLockBodyScroll } from "../../Hooks/useLockBodyScroll";
 
@@ -10,9 +11,9 @@ function Login({ onClose }) {
   const [logPassword, setLogPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  
+  const{apiUrl} = useApi();
   const navigate = useNavigate();
-
   useLockBodyScroll();
 
   async function HandlerLogin(e) {
@@ -23,9 +24,10 @@ function Login({ onClose }) {
     const userLogin = { UserName: logUserName, Password: logPassword };
 
     try {
-      const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/values/login', {
+      const response = await fetch(`${apiUrl}/api/values/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },  
+        "ngrok-skip-browser-warning": "true",
         body: JSON.stringify(userLogin),
       });
 

@@ -1,12 +1,13 @@
 import { useState } from "react"
 import '../UserLogic.css/UserReview.css'
-
+import { useApi } from "../../../Connect/ApiContext";
 
 function UserReview(){
     
     const[userReview,setDescripReview] = useState('');
     const[loading,setloading] = useState(false);
     const[error,seterror] = useState(null);
+    const{apiUrl} = useApi();
 
     async function SendReview(e) {
         e.preventDefault();
@@ -19,7 +20,7 @@ function UserReview(){
             if(!token){
                 throw new Error('You need authorization');
             }
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/User/submit-review-tosupport',{
+            const response = await fetch(`${apiUrl}/api/User/submit-review-tosupport`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

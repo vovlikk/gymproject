@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import HeaderUser from "../../UserLogic/User/UserPages/HeaderUser";
 import UserInfo from "../../UserLogic/User/UserPages/UserInfo"
 import UserDashboardHome from "./DashBoardsCompontents/UserDashBoardHome";
-
+import { useApi } from "../../Connect/ApiContext";
 function UserDashboard() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-
+  const { apiUrl } = useApi();
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log("Token from localStorage:", token);
@@ -16,7 +16,7 @@ function UserDashboard() {
       return;
     }
 
-    fetch("https://420e3a2fdda3.ngrok-free.app/api/values/profile", {
+    fetch(`${apiUrl}/api/values/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

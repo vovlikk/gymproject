@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import AdminHeader from '../../AdminLogic/Admin/AdminPages/AdminHeader'
 import AdminHomePage from "../../AdminLogic/Admin/AdminPages/AdminHomePage";
-
+import { useApi } from "../../Connect/ApiContext";
 
 
 function AdminDashboard(){
     const[admin,setadmin] = useState(null);
     const[error,seterror] = useState(null);
-
+    const { apiUrl } = useApi();
     useEffect(() =>{
         const token = localStorage.getItem('token');
         if(!token){
             throw new Error('You need authorize');
         }
 
-        fetch('https://420e3a2fdda3.ngrok-free.app/api/values/profile',{
+        fetch(`${apiUrl}/api/values/profile`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",

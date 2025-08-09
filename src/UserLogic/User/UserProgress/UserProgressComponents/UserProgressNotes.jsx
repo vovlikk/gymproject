@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import '../UserProgress.css/UserProgressNotes.css';
+import { useApi } from "../../../../Connect/ApiContext";
 
 function UserProgressNotes({ onClose }) {
     const [notes, setNotes] = useState([]);
@@ -9,6 +10,7 @@ function UserProgressNotes({ onClose }) {
     const [deleteid, setiIdDelete] = useState('');
     const[changeid,setChangeId] = useState('');
     const[changenotes,setChangeNote] = useState('');
+    const{apiUrl} = useApi();
 
     async function GetAllNote() {
         try {
@@ -17,7 +19,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/UserNote/get-all-notes', {
+            const response = await fetch(`${apiUrl}/api/UserNote/get-all-notes`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -52,7 +54,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization");
             }
 
-            const response = await fetch('https://420e3a2fdda3.ngrok-free.app/api/UserNote/post-new-note', {
+            const response = await fetch(`${apiUrl}/api/UserNote/post-new-note`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -78,7 +80,7 @@ function UserProgressNotes({ onClose }) {
             const token = localStorage.getItem('token');
             if (!token) throw new Error('You need Authorization');
 
-            const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/UserNote/deleteNote/${deleteid}`, {
+            const response = await fetch(`${apiUrl}/api/UserNote/deleteNote/${deleteid}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -107,7 +109,7 @@ function UserProgressNotes({ onClose }) {
                 throw new Error("You need authorization")
             }
 
-            const response = await fetch(`https://420e3a2fdda3.ngrok-free.app/api/UserNote/change-note/${changeid}`,{
+            const response = await fetch(`${apiUrl}/api/UserNote/change-note/${changeid}`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":"application/json",

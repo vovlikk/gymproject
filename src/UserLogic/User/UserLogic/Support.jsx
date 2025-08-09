@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../UserPagesCss/Support.css";
+import { useApi } from "../../../Connect/ApiContext";
 
 function Support({ onClose }) {
   const[name,setName] = useState('');
   const [description, setDescrip] = useState("");
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
+  const{apiUrl} = useApi();
 
   async function HandlerMessage() {
     setloading(true);
@@ -17,7 +19,7 @@ function Support({ onClose }) {
       if(!token){
         throw new Error('you need authorize');
       }
-      const response = await fetch("https://420e3a2fdda3.ngrok-free.app/api/User/submit-message-tosupport", {
+      const response = await fetch(`${apiUrl}/api/User/submit-message-tosupport`, {
         method: "POST",
         headers: { "Content-Type": "application/json" ,
           Authorization:`Bearer ${token}`,  
